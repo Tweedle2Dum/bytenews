@@ -1,28 +1,32 @@
 <script lang="ts">
-
-    const URL = "https://bytenewsbackend.fly.dev/create";
-    function handleSubmit(event){
-        const formData = new FormData(event.target);
-        const userEmail = Object.fromEntries(formData.entries());
-       fetch(`${URL}`,{
-            method: 'POST',
-            body: JSON.stringify(userEmail),
-       })
-
-    }
+  const URL = "https://bytenewsbackend.fly.dev/create";
+  function handleSubmit(event) {
+    const formData = new FormData(event.target);
+    const userEmail = Object.fromEntries(formData.entries());
+    fetch(`${URL}`, {
+      method: "POST",
+      body: JSON.stringify(userEmail),
+    });
+  }
 </script>
 
 <main>
   <div class="wrapper">
     <h2>Bytesized - your weekly does of tech news, hacks and tips!</h2>
     <form on:submit|preventDefault={handleSubmit}>
-        
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="" placeholder="Email Address"/>
-            <button type="submit">Submit</button>
-        
+      <label for="email">Email:</label>
+      <!-- svelte-ignore a11y-autofocus -->
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value=""
+        placeholder="Email Address"
+        autofocus
+      />
+      <button type="submit">Submit</button>
     </form>
-</div>
+  </div>
 </main>
 
 <style>
@@ -45,7 +49,7 @@
     align-items: center;
   }
 
-  form{
+  form {
     font-size: 1.4rem;
     display: flex;
     gap: 0.5em;
@@ -53,20 +57,17 @@
     justify-content: space-between;
   }
 
-  input{
+  input {
     outline: transparent;
     appearance: none;
     border: 1px solid transparent;
     padding: 0.5em;
     font-size: 1.2rem;
     border-radius: 12px;
-
   }
 
   input::placeholder {
     letter-spacing: 1px;
-
-
   }
 
   button {
@@ -78,13 +79,11 @@
     border: 1px solid white;
     border-radius: 12px;
     background-color: #313130;
-    transition: background-color 0.3s ease-in-out ;
-
+    transition: background-color 0.3s ease-in-out;
   }
 
   button:hover {
     color: #313130;
     background-color: whitesmoke;
-
   }
 </style>
