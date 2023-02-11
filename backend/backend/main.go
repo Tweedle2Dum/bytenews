@@ -2,13 +2,14 @@ package main
 
 import (
 	models "backend/Models"
+	"context"
 	"log"
 	"os"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
+	"github.com/mailgun/mailgun-go/v3"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
@@ -32,48 +33,34 @@ func main() {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	//db_key := os.Getenv("DB_KEY")
-	db, err := gorm.Open(postgres.Open(os.Getenv("DB_KEY")+"&application_name=$ docs_simplecrud_gorm"), &gorm.Config{}) //gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	db.AutoMigrate(&models.User{})
 
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 	r.POST("/create", func(c *gin.Context) {
 		var user models.User
-		err := c.BindJSON(&user)
-		if err != nil {
-			c.JSON(400, gin.H{
-				"message": "error",
-				"data":    err.Error(),
-			})
+		if err := c.ShouldBindJSON(&user); err != nil {
+			c.JSON(400, gin.H{"error": err.Error()})
 			return
 		}
-		db.Create(&models.User{Email: user.Email})
-		c.JSON(201, gin.H{
-			"message": "success",
-			"data":    user,
-		})
-	})
-	r.GET("/read", func(c *gin.Context) {
-		var users []models.User
-		db.Find(&users)
-		c.JSON(200, gin.H{
-			"message": "success",
-			"data":    users,
-		})
-	})
-	r.DELETE("/delete/:id", func(c *gin.Context) {
-		var user models.User
-		log.Println(c.Param("id"))
-		db.Where("Email=?", c.Param("id")).Delete(&models.User{})
-		c.JSON(200, gin.H{
-			"message": "success",
-			"data":    user,
-		})
+		c.BindJSON(&user)
+		mg := mailgun.NewMailgun("https://api.mailgun.net/v3/lists/daily@daily.bytesizenewsletter.tech/members", os.Getenv("MAILGUN_API_KEY"))
+
+		member := mailgun.Member{
+			Address: user.Email,
+		}
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second*30)
+		defer cancel()
+		err := mg.CreateMember(ctx, true, "daily@daily.bytesizenewsletter.tech", member)
+		if err != nil {
+			log.Fatal(err)
+			c.JSON(400, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(201, gin.H{"message": "success"})
+
 	})
 	r.Run() // listen and serve on
 }
