@@ -8,7 +8,7 @@
   <h1 class="logo">ByteSize</h1>
   <ul>
     <li class="advertise"><a href="#!">Advertise</a></li>
-    <li class="privacy"><a on:click|preventDefault={modalShow} id="showmodal" href="#!">Privacy</a></li>
+    <li class="privacy"><a tabindex="0" on:click|preventDefault={modalShow} id="showmodal" href="#!">Privacy</a></li>
   </ul>
 </nav>
 
@@ -57,7 +57,12 @@
   }
   /*--- till here ---- */
   a:link {
-    color: var(--clr-txt);
+    color: var(--clr-text);
+  }
+  a:visited{
+    color: var(--clr-text);
+
+
   }
 
   a:hover {
@@ -72,6 +77,12 @@
       display: flex;
       gap: 1em;
       justify-content: center;
+    }
+  }
+
+  @media (min-width:600px) {
+    nav {
+        padding: 1rem calc(2rem + 5vw);
     }
   }
 </style>
