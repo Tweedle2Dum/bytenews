@@ -1,13 +1,35 @@
+<script lang="ts">
+  import { detach } from "svelte/internal";
+
+
+      const URL = "https://bytenewsbackend.fly.dev/create";
+
+    function handleSubmit(event){
+        const formData = new FormData(event.target);
+        const userEmail = Object.fromEntries(formData.entries());
+        console.log(JSON.stringify(userEmail));
+        fetch(`${URL}`,{
+            method:'POST',
+            body: JSON.stringify(userEmail),
+        });        
+
+    }    
+</script>
+
+
+
+
 <div class="subscribe">
   <p>
     Keep pace with cutting-edge tech advancements through a AI-powered
     Byte-sized Newsletter, delivering concise updates right to your inbox.
   </p>
 
-  <form action="">
+  <form on:submit|preventDefault={handleSubmit}>
     <label for="email">Email:</label>
     <input
       type="email"
+      name="email"
       required
       aria-required="true"
       autofocus

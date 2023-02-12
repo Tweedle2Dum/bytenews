@@ -20,7 +20,5 @@
     transform: translate(50%,50%);
   }
 
-  .two{
-    
-  }
+  
 </style>
