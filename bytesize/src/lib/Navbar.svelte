@@ -2,8 +2,8 @@
 <nav>
     <h1 class="logo">ByteSize</h1>
     <ul>
-        <li><a href="">Advertise</a></li>
-        <li><a href="">Privacy</a></li>
+        <li class="advertise"><a href="">Advertise</a></li>
+        <li class="privacy"><a href="">Privacy</a></li>
 
     </ul>
 </nav>
@@ -22,13 +22,21 @@
 
     nav{
         padding: 1rem;
-        height: 100px;
+        min-height: 100px;
         background-color: transparent;
         display: flex;
-        align-items: center;
-       
+        align-items: center;       
         
     }
+
+    /* use with advert 
+
+    ul > li {
+        
+        padding: 0 0 0.5em 0;
+    }
+
+    */
 
    .logo{
     font-weight: 900;
@@ -39,21 +47,33 @@
         list-style: none;
         margin-left: auto;
         padding: 0;
+        
     }
+
+   
 
     a {
+        display: inline-block;
         color: var(--clr-text);
-        text-decoration: none;
+        text-decoration: underline;
 
 
     }
-
+    /* remove for advert link */
+    .advertise {
+        display: none;
+    }
+    /*--- till here ---- */
     a:link{
         color: var(--clr-txt);
     }
 
     a:hover{
-        text-decoration: underline;
+        transform: scale(1.1);
+    }
+    a:active {
+        transform: scale(1.1);
+
     }
 
 
