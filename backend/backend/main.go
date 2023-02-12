@@ -4,6 +4,7 @@ import (
 	models "backend/Models"
 	"context"
 	"log"
+	"net/http"
 	"os"
 	"time"
 
@@ -14,8 +15,12 @@ import (
 
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-
-		c.Header("Access-Control-Allow-Origin", "*")
+		//if gin.Mode() == gin.DebugMode {
+		//	c.Header("Access-Control-Allow-Origin", "*")
+		//} else {
+		//	c.Header("Access-Control-Allow-Origin", "https://bytesizenewsletter.tech")
+		//}
+		c.Header("Access-Control-Allow-Origin", "https://bytesizenewsletter.tech")
 		c.Header("Access-Control-Allow-Credentials", "true")
 		c.Header("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT, DELETE")
@@ -29,6 +34,7 @@ func CORSMiddleware() gin.HandlerFunc {
 	}
 }
 func main() {
+	gin.SetMode(gin.ReleaseMode)
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
@@ -40,12 +46,14 @@ func main() {
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 	r.POST("/create", func(c *gin.Context) {
+
 		var user models.User
-		if err := c.ShouldBindJSON(&user); err != nil {
-			c.JSON(400, gin.H{"error": err.Error()})
+		err := c.BindJSON(&user)
+		if err != nil {
+			c.JSON(http.StatusConflict, gin.H{"error": err.Error()})
 			return
 		}
-		c.BindJSON(&user)
+
 		mg := mailgun.NewMailgun("https://api.mailgun.net/v3/lists/daily@daily.bytesizenewsletter.tech/members", os.Getenv("MAILGUN_API_KEY"))
 
 		member := mailgun.Member{
@@ -53,13 +61,14 @@ func main() {
 		}
 		ctx, cancel := context.WithTimeout(context.Background(), time.Second*30)
 		defer cancel()
-		err := mg.CreateMember(ctx, true, "daily@daily.bytesizenewsletter.tech", member)
+		//TODO: set to false when the problem with this 400 error is fixed
+		err = mg.CreateMember(ctx, true, "daily@daily.bytesizenewsletter.tech", member)
 		if err != nil {
 			log.Fatal(err)
-			c.JSON(400, gin.H{"error": err.Error()})
+			c.JSON(http.StatusConflict, gin.H{"error": err.Error()})
 			return
 		}
-		c.JSON(201, gin.H{"message": "success"})
+		c.JSON(http.StatusCreated, gin.H{"message": "success"})
 
 	})
 	r.Run() // listen and serve on
