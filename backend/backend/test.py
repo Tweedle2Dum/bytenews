@@ -1,9 +1,9 @@
 import requests
 
 def test():
-    url="http://localhost:8080/create"
+    url="http://localhost:8000/create"
     data = {
-        "email":"test1@gmail.com",
+        "email":"sankhayan2002@gmail.com",
         }
     print(data)
     r = requests.post(url, json=data)
