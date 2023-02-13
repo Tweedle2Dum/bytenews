@@ -11,13 +11,30 @@
     position: fixed;
     z-index: -1;
     filter: blur(100px);
+    animation: rotate 50s linear  infinite alternate ;
+  }
+
+
+  @keyframes rotate {
+
+
+   
+    100%{
+      transform: rotate(-360deg);
+    }
     
   }
+
 
   .one {
     bottom:0% ;
     right: 25%;
     transform: translate(50%,50%);
+  }
+
+  .two {
+    transform: translate(-50%,-50%);
+
   }
 
   
