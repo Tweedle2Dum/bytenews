@@ -1,22 +1,20 @@
-<script  context="module" lang="ts">
+<script context="module" lang="ts">
   import Gradient from "./Gradient.svelte";
 
   const dialog = document.getElementsByTagName("dialog");
-   export function modalShow(event){
-        console.log(dialog[0])
-        dialog[0].showModal();
-        
-   }
+  export function modalShow(event) {
+    console.log(dialog[0]);
+    dialog[0].showModal();
+  }
 
-   const exitModal = document.querySelector(".exit");
-   function closeModal(event){
-    dialog[0].close()
-
-   }
+  const exitModal = document.querySelector(".exit");
+  function closeModal(event) {
+    dialog[0].close();
+  }
 </script>
 
 <dialog class="modal">
-    <h3>Privacy and Policy-</h3>
+  <h3>Privacy and Policy-</h3>
   <h1>Introduction:</h1>
   <p>
     At Byte Size, we are committed to protecting the privacy and security of our
@@ -52,15 +50,18 @@
   <p>
     We may update this privacy policy from time to time to reflect changes in
     our practices or services. Any changes made will be posted on this page.
-    <br><strong>Contact Us</strong>: If you have any questions or concerns about this privacy policy,
-    or if you would like to request access to or correction of your information,
-    please contact us by email at [insert email address here].
+    <br /><strong>Contact Us</strong>: If you have any questions or concerns
+    about this privacy policy, or if you would like to request access to or
+    correction of your information, please contact us by email at [insert email
+    address here].
   </p>
   <h2>Effective Date:</h2>
   <p>This privacy policy is effective as of [insert date here].</p>
-  <Gradient/>
-  <span class="exit-wrapper"><button on:click|preventDefault={closeModal} class="exit">BACK</button></span>
-
+  <Gradient />
+  <span class="exit-wrapper"
+    ><button on:click|preventDefault={closeModal} class="exit">BACK</button
+    ></span
+  >
 </dialog>
 
 <style>
@@ -74,14 +75,19 @@
     width: 75%;
     letter-spacing: 1px;
     box-shadow: 0 0 14px rgba(76, 36, 125, 0.771);
-    
-    
   }
 
-  .modal::backdrop{
-    background-color: rgba(0, 0, 0, 1);   
+  @media (prefers-color-scheme: dark) {
+    .modal::backdrop {
+      background-color: rgba(18, 18, 18, 1);
+    }
   }
 
+  @media (prefers-color-scheme: light) {
+    .modal::backdrop {
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
 
   .exit-wrapper {
     display: inline-block;
@@ -93,7 +99,6 @@
     );
     border-radius: 4px;
     padding: 1px;
-
   }
 
   .exit {
@@ -108,7 +113,7 @@
     transition: 0.5s;
   }
 
-  .exit-wrapper:hover{
+  .exit-wrapper:hover {
     background-image: linear-gradient(
       to right,
       #ff512f 0%,
@@ -121,7 +126,4 @@
     color: #fff;
     text-decoration: none;
   }
-  
-
-  
 </style>

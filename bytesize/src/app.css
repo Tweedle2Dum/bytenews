@@ -1,13 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
 
-:root {
 
-  font-family:'Open Sans', sans-serif;
-  --clr-foreground:#242324;
-  --clr-background:#000000;
-  --clr-text:#eef0f2;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  
+
+@media (prefers-color-scheme:dark){
+  :root {
+
+    font-family:'Open Sans', sans-serif;
+    --clr-background:#121212;
+    --clr-text:#eef0f2;
+    --modalback:rgba(0, 0, 0, 1);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    scroll-behavior: smooth;
+    
+  }
+
+}
+@media (prefers-color-scheme:light){
+  :root {
+
+    font-family:'Open Sans', sans-serif;
+    --clr-background::whitesmoke;
+    --clr-text::rgba(18,18,18,0);
+    --modalback:rgba(255, 255, 255, 1);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    scroll-behavior: smooth;
+    
+  }
+
 }
 
 html {
