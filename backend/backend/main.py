@@ -2,7 +2,6 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import requests
-import os
 
 origins = [
     #"http://localhost:8000",
@@ -11,6 +10,7 @@ origins = [
 
 DEV_ADDRESS="sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
 PROD_ADDRESS="daily.bytesizenewsletter.tech"
+PROD_EMAIL="daily@daily.bytesizenewsletter.tech"
 BASE_URL=f"https://api.mailgun.net/v3/"
 
 
@@ -55,7 +55,7 @@ async def create(email:Email,request: Request):
     
     if res.status_code==200:
         res1=requests.post(
-        f"{BASE_URL}lists/beta@sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org/members",
+        f"{BASE_URL}lists/{PROD_EMAIL}/members",
         auth=('api', "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
         data={'subscribed': True,
               'address': email.email})
