@@ -14,8 +14,8 @@
 </script>
 
 <dialog class="modal">
-  <h3>Privacy and Policy-</h3>
-  <h1>Introduction:</h1>
+  <h1>Privacy and Policy</h1>
+  <h2>Introduction:</h2>
   <p>
     At Byte Size, we are committed to protecting the privacy and security of our
     subscribers. This privacy policy outlines the information we collect, how we
