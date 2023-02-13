@@ -8,10 +8,15 @@
         const formData = new FormData(event.target);
         const userEmail = Object.fromEntries(formData.entries());
         console.log(JSON.stringify(userEmail));
-        fetch(`${URL}`,{
+        const response = fetch(`${URL}`,{
             method:'POST',
             body: JSON.stringify(userEmail),
-        });        
+            headers:{
+              'Content-Type': 'application/json'
+            },
+        })
+        console.log(response);
+                
 
     }    
 </script>
