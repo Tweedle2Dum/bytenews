@@ -51,17 +51,20 @@ async def create(email:Email,request: Request):
     #if request.url!="https://www.bytesizenewsletter.tech/":
     #    return {"message": "Not Found"}
     
-    res=send_message(email.email)
     
-    if res.status_code==200:
-        res1=requests.post(
+    res1=requests.post(
         f"{BASE_URL}lists/{PROD_EMAIL}/members",
         auth=('api', "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
         data={'subscribed': True,
               'address': email.email})
-        if res1.status_code==200:
+    if res1.status_code==200:
+        res=send_message(email.email)
+        if res.status_code==200:
             return {"message": "Created"}
         else:
-            return {"message": "Error", "status_code": res1.status_code, "data": res1.text}
+            res2=requests.delete(
+            f"{BASE_URL}lists/{PROD_EMAIL}/members/{email.email}",
+            auth=('api', "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"))
+            return {"message": "Error", "status_code": res.status_code, "data": res.text,"Removed status": res2.status_code, "User has been removed": res2.text}
     else:
-        return {"message": "Bruh", "status_code": res.status_code, "data": res.text}
+        return {"message": "Bruh", "status_code": res1.status_code, "data": res1.text}
