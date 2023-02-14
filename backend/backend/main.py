@@ -61,7 +61,7 @@ async def create(email:Email,request: Request):
     if res1.status_code==200:
         res=send_message(email.email)
         if res.status_code==200:
-            return {"message": "Created"}
+            return {"message": "Created", "status_code": res.status_code, "data": res.text}
         else:
             res2=requests.delete(
             f"{BASE_URL}lists/{PROD_EMAIL}/members/{email.email}",
