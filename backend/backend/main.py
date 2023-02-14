@@ -11,6 +11,7 @@ origins = [
 DEV_ADDRESS="sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
 PROD_ADDRESS="daily.bytesizenewsletter.tech"
 PROD_EMAIL="daily@daily.bytesizenewsletter.tech"
+DEV_EMAIL="beta@sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
 BASE_URL=f"https://api.mailgun.net/v3/"
 
 

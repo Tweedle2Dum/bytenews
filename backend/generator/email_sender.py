@@ -4,7 +4,7 @@ def send_message():
 	template=open("newsletter_template.html")
 	return requests.post(
 		"https://api.mailgun.net/v3/daily.bytesizenewsletter.tech/messages",
-		auth=("api", os.getenv('MAILGUN_API_KEY')),
+		auth=("api", "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
 		data={"from": 'ByteSized 🍪<newsletter@bytesizenewsletter.tech>',
 			"to": ["daily@daily.bytesizenewsletter.tech",],
 			"subject": "Hello",
@@ -20,5 +20,6 @@ def add_new_member():
         auth=('api', os.getenv('MAILGUN_API_KEY')),
         data={'subscribed': True,
               'address': 'ss'})
-r=add_new_member()
+
+r=send_message()
 print(r.text,r.status_code)
