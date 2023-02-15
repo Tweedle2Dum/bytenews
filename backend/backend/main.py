@@ -11,6 +11,7 @@ origins = [
 DEV_ADDRESS="sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
 PROD_ADDRESS="daily.bytesizenewsletter.tech"
 PROD_EMAIL="daily@daily.bytesizenewsletter.tech"
+DEV_EMAIL="beta@sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
 BASE_URL=f"https://api.mailgun.net/v3/"
 
 
@@ -60,7 +61,7 @@ async def create(email:Email,request: Request):
     if res1.status_code==200:
         res=send_message(email.email)
         if res.status_code==200:
-            return {"message": "Created"}
+            return {"message": "Created", "status_code": res.status_code, "data": res.text}
         else:
             res2=requests.delete(
             f"{BASE_URL}lists/{PROD_EMAIL}/members/{email.email}",
