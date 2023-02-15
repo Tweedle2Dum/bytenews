@@ -6,9 +6,7 @@
   const URL = "https://bytenewsbackend.fly.dev/create";
   let msg;
   onMount(()=>{
-    msg = document.querySelector(".msg");
-    console.log(msg);
- 
+    msg = document.querySelector(".msg"); 
   })
   function handleSubmit(event) {
     const formData = new FormData(event.target);
