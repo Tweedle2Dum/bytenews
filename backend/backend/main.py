@@ -34,7 +34,7 @@ async def root():
 
 
 def send_message(email:str):
-	#template=open("newsletter_template.html")
+    template=open("thankyou_template.html")
     print(f"{BASE_URL}{PROD_ADDRESS}/messages")
     return requests.post(
 		f"{BASE_URL}{PROD_ADDRESS}/messages",
@@ -42,10 +42,7 @@ def send_message(email:str):
 		data={"from": 'ByteSized 🍪<newsletter@bytesizenewsletter.tech>',
 			"to": [email,],
 			"subject": "Welcome to ByteSize!",
-			"text": '''Welcome to ByteSized!
-                       We are happy to have you onboard!
-                       Click on unsubscribe if you didn't signup for this newsletter.
-            '''})
+			"html":template})
 
 @app.post("/create")
 async def create(email:Email,request: Request):
