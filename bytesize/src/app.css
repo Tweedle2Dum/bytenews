@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
-
-
 
 @media (prefers-color-scheme:dark){
   :root {
@@ -9,7 +6,6 @@
     --clr-background:#121212;
     --clr-text:#eef0f2;
     --modalback:rgba(0, 0, 0, 1);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     scroll-behavior: smooth;
     
   }
