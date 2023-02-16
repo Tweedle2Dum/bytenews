@@ -14,8 +14,8 @@ PROD_EMAIL="daily@daily.bytesizenewsletter.tech"
 DEV_EMAIL="beta@sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
 BASE_URL=f"https://api.mailgun.net/v3/"
 
-EMAIL=DEV_EMAIL
-ADDRESS=DEV_ADDRESS
+EMAIL=PROD_EMAIL
+ADDRESS=PROD_ADDRESS
 
 
 
