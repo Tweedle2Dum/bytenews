@@ -1,13 +1,24 @@
 import requests
 import os
+
+DEV_ADDRESS="sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
+PROD_ADDRESS="daily.bytesizenewsletter.tech"
+PROD_EMAIL="daily@daily.bytesizenewsletter.tech"
+DEV_EMAIL="beta@sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
+BASE_URL=f"https://api.mailgun.net/v3/"
+
+EMAIL=DEV_EMAIL
+ADDRESS=DEV_ADDRESS
+
 def send_message():
-	template=open("newsletter_template.html")
-	return requests.post(
-		"https://api.mailgun.net/v3/daily.bytesizenewsletter.tech/messages",
+    template=open("newsletter_template.html")
+    print(f"{BASE_URL}{ADDRESS}/messages")
+    return requests.post(
+		f"{BASE_URL}{ADDRESS}/messages",
 		auth=("api", "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
 		data={"from": 'ByteSized 🍪<newsletter@bytesizenewsletter.tech>',
-			"to": ["daily@daily.bytesizenewsletter.tech",],
-			"subject": "Hello",
+			"to": ["sankhayan2002@gmail.com",],
+			"subject": "Welcome to ByteSize!",
 			"html":template})
 def list_members():
     print(os.getenv('MAILGUN_API_KEY'))

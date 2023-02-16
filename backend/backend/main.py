@@ -14,6 +14,9 @@ PROD_EMAIL="daily@daily.bytesizenewsletter.tech"
 DEV_EMAIL="beta@sandbox8a3862acac9b45fe87fb5f9404836bc0.mailgun.org"
 BASE_URL=f"https://api.mailgun.net/v3/"
 
+EMAIL=DEV_EMAIL
+ADDRESS=DEV_ADDRESS
+
 
 
 app = FastAPI()
@@ -35,9 +38,9 @@ async def root():
 
 def send_message(email:str):
     template=open("thankyou_template.html")
-    print(f"{BASE_URL}{PROD_ADDRESS}/messages")
+    print(f"{BASE_URL}{ADDRESS}/messages")
     return requests.post(
-		f"{BASE_URL}{PROD_ADDRESS}/messages",
+		f"{BASE_URL}{ADDRESS}/messages",
 		auth=("api", "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
 		data={"from": 'ByteSized 🍪<newsletter@bytesizenewsletter.tech>',
 			"to": [email,],
@@ -51,7 +54,7 @@ async def create(email:Email,request: Request):
     
     
     res1=requests.post(
-        f"{BASE_URL}lists/{PROD_EMAIL}/members",
+        f"{BASE_URL}lists/{EMAIL}/members",
         auth=('api', "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
         data={'subscribed': True,
               'address': email.email})
@@ -61,7 +64,7 @@ async def create(email:Email,request: Request):
             return {"message": "Created", "status_code": res.status_code, "data": res.text}
         else:
             res2=requests.delete(
-            f"{BASE_URL}lists/{PROD_EMAIL}/members/{email.email}",
+            f"{BASE_URL}lists/{EMAIL}/members/{email.email}",
             auth=('api', "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"))
             return {"message": "Error", "status_code": res.status_code, "data": res.text,"Removed status": res2.status_code, "User has been removed": res2.text}
     else:
