@@ -52,11 +52,11 @@
     our practices or services. Any changes made will be posted on this page.
     <br /><strong>Contact Us</strong>: If you have any questions or concerns
     about this privacy policy, or if you would like to request access to or
-    correction of your information, please contact us by email at [insert email
-    address here].
+    correction of your information, please contact us by email at
+    newsletter@bytesizenewsletter.tech.
   </p>
   <h2>Effective Date:</h2>
-  <p>This privacy policy is effective as of [insert date here].</p>
+  <p>This privacy policy is effective as of Febuary 16, 2023.</p>
   <Gradient />
   <span class="exit-wrapper"
     ><button on:click|preventDefault={closeModal} class="exit">BACK</button
@@ -87,7 +87,7 @@
     .modal::backdrop {
       background-color: rgba(255, 255, 255, 1);
     }
-    
+
   }
 
   .exit-wrapper {
