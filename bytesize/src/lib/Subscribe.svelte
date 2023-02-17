@@ -25,11 +25,11 @@
     .then((response) => {
       console.log(response.status_code)
       if(response.status_code >=200 && response.status_code<300){
-        msg.textContent = "You have been sucessfully subscribed!"
+        msg.textContent = "You have been sucessfully subscribed!\nPlease check your spam folder if you haven't received any mails."
 
       }
       else if(response.status_code==400) {
-        msg.textContent = "Already subscribed!"
+        msg.textContent = "Already subscribed!\nPlease check your spam folder if you are not receiving any mails."
 
       }
       else {
@@ -109,7 +109,8 @@
 
   .msg{
     position: relative;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    color: greenyellow;
   }
 
   .btn-wrapper {

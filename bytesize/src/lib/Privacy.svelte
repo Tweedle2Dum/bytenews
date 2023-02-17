@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import Gradient from "./Gradient.svelte";
-
+ 
   const dialog = document.getElementsByTagName("dialog");
   export function modalShow(event) {
     console.log(dialog[0]);
@@ -87,6 +87,7 @@
     .modal::backdrop {
       background-color: rgba(255, 255, 255, 1);
     }
+    
   }
 
   .exit-wrapper {
