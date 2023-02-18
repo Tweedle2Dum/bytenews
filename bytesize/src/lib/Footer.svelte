@@ -1,7 +1,5 @@
 <script lang="ts">
-    if(window.matchMedia){
-        const query = window.matchMedia("prefers-color-scheme:dark");
-    }
+   
     
 </script>
 
