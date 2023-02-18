@@ -50,10 +50,14 @@
   <p>
     We may update this privacy policy from time to time to reflect changes in
     our practices or services. Any changes made will be posted on this page.
-    <br /><strong>Contact Us</strong>: If you have any questions or concerns
-    about this privacy policy, or if you would like to request access to or
-    correction of your information, please contact us by email at
-    newsletter@bytesizenewsletter.tech.
+    <br />
+  </p>
+  <h2>Contact Us: </h2>
+  <p>
+    If you have any questions or concerns
+      about this privacy policy, or if you would like to request access to or
+      correction of your information, please contact us by email at
+      newsletter@bytesizenewsletter.tech.
   </p>
   <h2>Effective Date:</h2>
   <p>This privacy policy is effective as of Febuary 16, 2023.</p>
