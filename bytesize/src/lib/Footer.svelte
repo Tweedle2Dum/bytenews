@@ -7,8 +7,8 @@
 
 <div class="footer-wrapper">
 
-    <a rel="nofollow" href="https://discord.gg/EzDpNPDxbV"><img src="discord.svg" alt="Discord Link"></a>
-    <a  rel="nofollow" href = "https://www.instagram.com/bytesizenewsletter/"><img src="instagram.svg" alt="Instagram Link"></a>
+    <a target="_blank" rel="nofollow noopener noreferrer" href="https://discord.gg/EzDpNPDxbV"><img src="discord.svg" alt="Discord Link"></a>
+    <a target="_blank" rel="nofollow noopener noreferrer" href = "https://www.instagram.com/bytesizenewsletter/"><img src="instagram.svg" alt="Instagram Link"></a>
 </div>
 
 
