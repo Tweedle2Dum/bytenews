@@ -3,7 +3,7 @@
 import Navbar from "./lib/Navbar.svelte";
   import Privacy from "./lib/Privacy.svelte";
   import Subscribe from "./lib/Subscribe.svelte";
-
+  import Footer from "./lib/Footer.svelte";
 </script>
 
 <header><Navbar/></header>
@@ -13,6 +13,10 @@ import Navbar from "./lib/Navbar.svelte";
 </main>
 
 <Gradient/>
+
+<footer>
+  <Footer/>
+</footer>
   
 
 
@@ -23,6 +27,10 @@ import Navbar from "./lib/Navbar.svelte";
     justify-content: center;
     align-items: center;
     flex: 1;
+  }
+
+  footer{
+    width: 100%;
   }
   
 </style>

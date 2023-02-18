@@ -50,6 +50,7 @@
     display: inline-block;
     color: var(--clr-text);
     text-decoration: underline;
+    transition: transform 200ms ease-in-out;
   }
   /* remove for advert link */
   .advertise {
