@@ -107,10 +107,20 @@
     gap: 1em;
   }
 
+ 
   .msg{
     position: relative;
     font-size: 0.9rem;
+    color: rgb(0, 139, 0);
+  }
+
+  @media (prefers-color-scheme:dark){
+    .msg{
+    position: relative;
+    font-size: 0.9rem;
     color: greenyellow;
+  }
+
   }
 
   .btn-wrapper {
