@@ -12,7 +12,7 @@ EMAIL=PROD_EMAIL
 ADDRESS=PROD_ADDRESS
 
 def send_message():
-    template=open("newsletters/html/19_02_2023_newsletter.html")
+    template=open("")
     template=template.read().replace("\n","")
     print(f"{BASE_URL}{ADDRESS}/messages")
     return requests.post(
@@ -20,7 +20,7 @@ def send_message():
 		auth=("api", "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
 		data={"from": 'ByteSized 🍪<newsletter@bytesizenewsletter.tech>',
 			"to": [EMAIL,],
-			"subject": "Apple fires contractors, Researchers discover stealthy malware 🥷, and more",
+			"subject": "Google Chrome's new battery saving feature 🔋, outlook users report broken spam filters 🗑️ and many more",
 			"html":template})
 def list_members():
     print(os.getenv('MAILGUN_API_KEY'))
