@@ -17,7 +17,7 @@ def send_message():
     print(f"{BASE_URL}{ADDRESS}/messages")
     return requests.post(
 		f"{BASE_URL}{ADDRESS}/messages",
-		auth=("api", "536f3dd4ed281a2775a533ed9e590f4e-d1a07e51-509eefca"),
+		auth=("api", ""),
 		data={"from": 'ByteSized 🍪<newsletter@bytesizenewsletter.tech>',
 			"to": [EMAIL,],
 			"subject": "Google Chrome's new battery saving feature 🔋, outlook users report broken spam filters 🗑️ and many more",
